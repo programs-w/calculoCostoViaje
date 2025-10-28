@@ -1,0 +1,44 @@
+import { GastoCombustible } from "../models/gastoCombustible.model.js";
+const jsonHistorico = `[
+  {"id":1,"vehicleType":"moto","date":"2015-04-04T00:00:00.000Z","kilometers":28,"precioViaje":1.68},
+  {"id":2,"vehicleType":"furgoneta","date":"2015-09-18T00:00:00.000Z","kilometers":145,"precioViaje":14.10},
+  {"id":3,"vehicleType":"camion","date":"2015-10-30T00:00:00.000Z","kilometers":350,"precioViaje":56.00},
+
+  {"id":4,"vehicleType":"moto","date":"2016-05-17T00:00:00.000Z","kilometers":40,"precioViaje":2.40},
+  {"id":5,"vehicleType":"furgoneta","date":"2016-08-19T00:00:00.000Z","kilometers":130,"precioViaje":13.00},
+  {"id":6,"vehicleType":"camion","date":"2016-09-14T00:00:00.000Z","kilometers":300,"precioViaje":48.00},
+
+  {"id":7,"vehicleType":"camion","date":"2017-02-22T00:00:00.000Z","kilometers":300,"precioViaje":48.00},
+  {"id":8,"vehicleType":"moto","date":"2017-04-22T00:00:00.000Z","kilometers":60,"precioViaje":3.60},
+  {"id":9,"vehicleType":"camion","date":"2017-06-05T00:00:00.000Z","kilometers":290,"precioViaje":47.00},
+
+  {"id":10,"vehicleType":"furgoneta","date":"2018-03-11T00:00:00.000Z","kilometers":135,"precioViaje":13.75},
+  {"id":11,"vehicleType":"moto","date":"2018-05-23T00:00:00.000Z","kilometers":50,"precioViaje":3.50},
+  {"id":12,"vehicleType":"camion","date":"2018-07-17T00:00:00.000Z","kilometers":190,"precioViaje":30.40},
+
+  {"id":13,"vehicleType":"camion","date":"2019-02-27T00:00:00.000Z","kilometers":275,"precioViaje":44.00},
+  {"id":14,"vehicleType":"moto","date":"2019-04-15T00:00:00.000Z","kilometers":45,"precioViaje":2.70},
+  {"id":15,"vehicleType":"camion","date":"2019-05-08T00:00:00.000Z","kilometers":220,"precioViaje":35.20},
+
+  {"id":16,"vehicleType":"camion","date":"2020-03-18T00:00:00.000Z","kilometers":200,"precioViaje":32.00},
+  {"id":17,"vehicleType":"furgoneta","date":"2020-10-08T00:00:00.000Z","kilometers":180,"precioViaje":18.90},
+  {"id":18,"vehicleType":"moto","date":"2020-12-04T00:00:00.000Z","kilometers":34,"precioViaje":2.04}
+]`;
+
+const historico_db = JSON.parse(jsonHistorico);
+export const GASTOS_DB = [];
+
+//Guardando cada registro en GASTO_DB
+historico_db.forEach(function(registro) {
+    GASTOS_DB.push(
+        new GastoCombustible(
+            registro.id,
+            registro.vehicleType,
+            registro.date,
+            registro.kilometers,
+            registro.precioViaje
+        )
+    );
+});
+
+
